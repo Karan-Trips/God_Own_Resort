@@ -1,0 +1,65 @@
+{% extends 'ResortPage.html' %}
+{% block body %}
+<form method="POST" enctype="multipart/form-data">
+   {% csrf_token %} 
+<table align="center">
+<tr>
+    <td><label>Accommodation Title</label></td>
+    <td><input type="text" name="at" class="textbox"></td>
+</tr>
+<tr>
+    <td><label>Image</label></td>
+    <td><input type="file" name="af" class="textbox"></td>
+</tr>
+<tr>
+    <td><label>Dining Title</label></td>
+    <td><input type="text" name="dt"  class="textbox"></td>
+</tr>
+<tr>
+    <td><label>Image</label></td>
+    <td><input type="file" name="df"  class="textbox"></td>
+</tr>
+<tr>
+    <td><label>Hall Title</label></td>
+    <td><input type="text" name="ht"  class="textbox"></td>
+</tr>
+<tr>
+    <td><label>Image</label></td>
+    <td><input type="file" name="hf"  class="textbox"></td>
+</tr>
+<tr>
+    <td><label>Ayurvedha Title</label></td>
+    <td><input type="text" name="ayt"  class="textbox"></td>
+</tr>
+<tr>
+    <td><label>Image</label></td>
+    <td><input type="file" name="ayf"  class="textbox"></td>
+</tr>
+<tr>
+    <td><label>Package Title</label></td>
+    <td><input type="text" name="pat"  class="textbox"></td>
+</tr>
+<tr>
+    <td><label>Image</label></td>
+    <td><input type="file" name="paf"  class="textbox"></td>
+</tr>
+<tr>
+    <td><label>Facility Title</label></td>
+    <td><input type="text" name="pt"  class="textbox"></td>
+</tr>
+<tr>
+    <td><label>Image</label></td>
+    <td><input type="file" name="pf" class="textbox"></td>
+</tr>
+<tr>
+    <td><input type="submit" value="Add" name="Add" class="but"/></td>
+</tr>
+</table>
+
+</form>
+{% if msg %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endif %}
+{% endblock %}

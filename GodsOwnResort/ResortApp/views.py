@@ -1,8 +1,9 @@
 from django.shortcuts import render,HttpResponseRedirect
+import MySQLdb
 import datetime
 from django.http import HttpResponse
 from django.core.files.storage import FileSystemStorage
-import json as simplejson
+import simplejson as json
 from datetime import date
 from datetime import datetime
 import datetime
@@ -14,7 +15,7 @@ def sendsms(ph,msg):
     sendToPhoneNumber= "+91"+ph
     userid = "2000022557"
     passwd = "54321@lcc"
-    url = "http://enterprise.smsgupshup.com/GatewayAPI/rest?method=SendMessage&send_to" + sendToPhoneNumber + "&msg=" + msg + "&userid=" + userid + "&password=" + passwd + "&v=1.1&msg_type=TEXT&auth_scheme=PLAIN"
+    url = "http://enterprise.smsgupshup.com/GatewayAPI/rest?method=sendMessage&send_to=" + sendToPhoneNumber + "&msg=" + msg + "&userid=" + userid + "&password=" + passwd + "&v=1.1&msg_type=TEXT&auth_scheme=PLAIN"
     # contents = urllib.request.urlopen(url)
     webbrowser.open(url)
 
@@ -31,6 +32,7 @@ def generateOTP() :
     return OTP 
 
 # Create your views here.
+@REM db = MySQLdb.connect('localhost','root','','resort')
 
 db = mysql.connector.connect(
     host='localhost',
@@ -38,8 +40,6 @@ db = mysql.connector.connect(
     password='',
     database='resort'
 )
-
-
 c = db.cursor()
 
 def AdminHome(request):
@@ -512,7 +512,7 @@ def CustomerBookResortAccommodation(request):
         acname = data[0][2]
         amount = data[0][4]
     if request.POST:
-        rid = request.session['rid']
+        rid = request.session['crid']
         cid = request.session['cid']
         roomid = request.session['acid']
         cin = request.POST.get('checkin')
@@ -551,7 +551,7 @@ def CustomerBookResortDining(request):
         diname = data[0][2]
         amount = data[0][4]
     if request.POST:
-        rid = request.session['rid']
+        rid = request.session['crid']
         cid = request.session['cid']
         did = request.session['did']
         cin = request.POST.get('checkin')
@@ -586,7 +586,7 @@ def CustomerBookResortEvents(request):
         hname = data[0][2]
         amount = data[0][5]
     if request.POST:
-        rid = request.session['rid']
+        rid = request.session['crid']
         cid = request.session['cid']
         hid = request.session['hid']
         cin = request.POST.get('checkin')
@@ -597,7 +597,7 @@ def CustomerBookResortEvents(request):
 
 def CustomerViewResortAyurvedha(request):
     rid = request.session["curid"]
-    request.session['rid'] = rid
+    request.session['crid'] = rid
     c.execute("select * from ayurvedha where rid = '"+str(rid)+"'")
     data = c.fetchall()
     return render(request,"CustomerViewResortAyurvedha.html",{"data":data})
@@ -619,8 +619,7 @@ def CustomerBookResortAyurvedha(request):
     if data:
         ayname = data[0][2]
     if request.POST:
-
-        rid = request.session['rid']
+        rid = request.session['crid']
         cid = request.session['cid']
         roomid = request.session['ayid']
         cin = request.POST.get('checkin')

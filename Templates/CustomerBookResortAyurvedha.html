@@ -1,0 +1,27 @@
+{% extends 'CustomerResortSingle.html' %}
+{% block body %}
+
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %} 
+<table align="center">
+<tr>
+    <td><label>Ayurvedha Package</label></td>
+    <td><input type="text" value="{{ayname}}" readonly name="room" class="textbox"></td>
+</tr>
+<tr>
+    <td><label>Check-In</label></td>
+    <td><input type="date" name="checkin" min="{{ct}}"  max="2020-11-31" id="date1" class="textbox"></td>
+</tr>
+
+<tr>
+    <td><input type="submit" value="Make A Reservation" name="Add" class="but"/></td>
+</tr>
+</table>
+
+</form>
+{% if msg %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endif %}
+{% endblock %}

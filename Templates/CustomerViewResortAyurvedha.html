@@ -1,0 +1,23 @@
+{% extends 'CustomerResortSingle.html' %}
+{% block body %}
+<form action="#" method="post" >
+{% csrf_token %}
+
+<div class="blog-info">
+    {% for d in data %}
+    <div class="col-md-6 blog-grids">
+        <div class="blog-img">
+            <a href="/CustomerViewResortAyurDetails/?id={{d.0}}"> <img src="../static{{d.6}}"  class="img-responsive zoom-img" alt=""/></a>
+        </div>
+        <h4><a href="/CustomerViewResortAyurDetails/?id={{d.0}}">{{d.2}}</a></h4>
+        <div class="more more2">
+            <a href="/CustomerViewResortAyurDetails/?id={{d.0}}" class="button-pipaluk button--inverted"> Read More</a>
+        </div>
+    </div>
+    
+    {% endfor %}
+    <div class="clearfix"> </div>
+    
+
+</div>
+{% endblock %}

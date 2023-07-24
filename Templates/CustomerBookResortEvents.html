@@ -1,0 +1,26 @@
+{% extends 'CustomerResortSingle.html' %}
+{% block body %}
+
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %} 
+<table align="center">
+<tr>
+    <td><label>Hall</label></td>
+    <td><input type="text" value="{{hname}}" readonly name="rest" class="textbox"></td>
+</tr>
+<tr>
+    <td><label>Date</label></td>
+    <td><input type="date" name="checkin" min="{{ct}}"  class="textbox"></td>
+</tr>
+<tr>
+    <td><input type="submit" value="Make A Reservation" name="Add" class="but"/></td>
+</tr>
+</table>
+
+</form>
+{% if msg %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'AdminPage.html' %}
+{% block body %}
+<form action="#" method="post" >
+{% csrf_token %}
+{% if data %}
+<table class="customers">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>District</th>  
+        <th>Address</th>   
+        <th>Email</th>
+        <th>Category</th>    
+    </tr>
+    {% for d in data %}
+    <tr>
+        <td>{{d.0}}</td>
+        <td>{{d.1}}</td>
+        <td>{{d.13}}</td>
+        <td>{{d.2}}</td>
+        <td>{{d.7}}</td>
+        <td>{{d.15}}</td>
+        <td><a href="/AdminViewResorts/?id={{d.0}}&st=Accept">Accept</a></td>
+        <td><a href="/AdminViewResorts/?id={{d.0}}&st=Reject">Reject</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<h1>No Registered Resorts found</h1>
+{% endif %}
+{% endblock %}
