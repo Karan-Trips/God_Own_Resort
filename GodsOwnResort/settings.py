@@ -25,7 +25,8 @@ SECRET_KEY = '_djga8w$_=h9x9sua@w0983f9sa(58+e5u%+m^x=c)8mupe)jz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
+
 
 
 # Application definition
@@ -127,3 +128,7 @@ STATIC_URL ='static/'
 STATICFILES_DIRS = ['ResortApp/static']
 MEDIA_URL='media/'
 MEDIA_ROOT='ResortApp/static/media'
+import os
+STATICFILES_DIRS = os.path.join(BASE_DIR,'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+
