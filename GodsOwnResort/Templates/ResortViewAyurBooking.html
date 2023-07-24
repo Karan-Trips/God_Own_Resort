@@ -1,0 +1,27 @@
+{% extends 'ResortPage.html' %}
+{% block body %}
+<form action="#" method="post" >
+{% csrf_token %}
+<table class="customers">
+    <tr>
+        <th>Booking ID</th>
+        <th>Customer</th>
+        <th>Phone</th>  
+        <th>Email</th>   
+        <th>Ayurvedha</th>  
+        <th>Date</th>    
+    </tr>
+    {% for d in data %}
+    <tr>
+        <td>{{d.7}}</td>
+        <td>{{d.15}}</td>
+        <td>{{d.19}}</td>
+        <td>{{d.20}}</td>
+        <td>{{d.2}}</td>
+        <td>{{d.11}}</td>
+        <td><a href="/ResortViewAccoBooking/?id={{d.7}}&st=Accept&fo={{d.19}}">Accept</a></td>
+        <td><a href="/ResortViewAccoBooking/?id={{d.7}}&st=Reject&fo={{d.19}}">Reject</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

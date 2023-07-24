@@ -1,0 +1,25 @@
+{% extends 'ResortPage.html' %}
+{% block body %}
+<form method="POST" enctype="multipart/form-data">
+   {% csrf_token %} 
+<table align="center">
+<tr>
+    <td><label>Facility</label></td>
+    <td><input type="text" name="fname" class="textbox"></td>
+</tr>
+<tr>
+    <td><label>Image</label></td>
+    <td><input type="file" name="image" class="textbox"></td>
+</tr>
+<tr>
+    <td><input type="submit" value="Add Now" name="Add" class="but"/></td>
+</tr>
+</table>
+
+</form>
+{% if msg %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endif %}
+{% endblock %}

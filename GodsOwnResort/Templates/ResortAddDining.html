@@ -1,0 +1,37 @@
+{% extends 'ResortPage.html' %}
+{% block body %}
+<form method="POST" enctype="multipart/form-data">
+   {% csrf_token %} 
+<table align="center">
+<tr>
+    <td><label>Restaurant</label></td>
+    <td><input type="text" name="room" class="textbox"></td>
+</tr>
+<tr>
+    <td><label>Description</label></td>
+    <td><input type="text" name="desc" class="textbox"></td>
+</tr>
+<tr>
+    <td><label>Amount</label></td>
+    <td><input type="text" name="price"  class="textbox"></td>
+</tr>
+<tr>
+    <td><label>On Time</label></td>
+    <td><input type="text" name="time"  class="textbox"></td>
+</tr>
+<tr>
+    <td><label>Image</label></td>
+    <td><input type="file" name="image" class="textbox"></td>
+</tr>
+<tr>
+    <td><input type="submit" value="Add" name="Add" class="but"/></td>
+</tr>
+</table>
+
+</form>
+{% if msg %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endif %}
+{% endblock %}

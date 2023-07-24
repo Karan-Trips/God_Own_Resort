@@ -1,0 +1,24 @@
+{% extends 'CustomerResortSingle.html' %}
+{% block body %}
+<form action="#" method="post" >
+{% csrf_token %}
+<div class="col-md-8 single-page-left">
+    {% for d in data %}
+    <div class="single-page-info">
+        <img src="../static{{d.6}}" alt=""/>
+        <h4 >{{d.2}}</h4>
+        <p>{{d.3}}</p>
+        <p>Amount : {{d.4}} ₹</p>
+        <p>Days : {{d.5}} </p>
+    </div>	
+    
+   
+      <!-- <a href="#" class="button">Book Now</a> -->
+      <div class="more more2">
+        <a href="/CustomerBookResortAyurvedha/?id={{d.0}}" class="button-pipaluk button--inverted"> Book Now</a>
+    </div>
+    {% endfor %}
+                    <div class="clearfix"> </div>
+</div>	
+</form>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'CustomerPage.html' %}
+{% block body %}
+<form action="#" method="post" >
+{% csrf_token %}
+{% if data %}
+<table class="customers">
+    <tr>
+        <th>Booking ID</th>
+        <th>Package</th>  
+        <th>Date</th>    
+        <th>Amount</th>
+    </tr>
+    {% for d in data %}
+    <tr>
+        <td>{{d.8}}</td>
+        <td>{{d.2}}</td>
+        <td>{{d.12}}</td>
+        <td>{{d.6}}</td>
+        <td><a href="/CustomerViewPackagePayment/?id={{d.8}}&st=Paid&am={{d.6}}">Payment</a></td>
+        <td><a href="/CustomerViewPackagePayment/?id={{d.8}}">Cancel</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% else %}
+<h1>No Booking</h1>
+{% endif %}
+{% endblock %}

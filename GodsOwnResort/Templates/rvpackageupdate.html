@@ -1,0 +1,36 @@
+{% extends 'ResortPage.html' %}
+{% block body %}
+<form method="POST" enctype="multipart/form-data">
+   {% csrf_token %} 
+<table align="center">
+  
+<tr>
+    <td><label>Name</label></td>
+    <td><input type="text" name="room" placeholder="" value="{{data.2}}" class="textbox"></td>
+</tr>
+<tr>
+    <td><label>Description</label></td>
+    <td><input type="text" name="desc" value="{{data.3}}" class="textbox"></td>
+</tr>
+<tr>
+    <td><label>Details</label></td>
+    <td><input type="text" name="price" value="{{data.4}}" class="textbox"></td>
+</tr>
+<tr>
+    <td><label>amount</label></td>
+    <td><input type="text" name="days" value="{{data.6}}" class="textbox"></td>
+</tr>
+
+<tr>
+    <td><input type="submit" value="Add" name="Add" class="but"/></td>
+</tr>
+
+</table>
+
+</form>
+{% if msg %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endif %}
+{% endblock %}
