@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 #!/bin/bash
 set -e
 echo "BUILD START"
