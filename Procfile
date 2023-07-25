@@ -1,0 +1,1 @@
+web: gunicorn GodsOwnResort.wsgi --log-file -
